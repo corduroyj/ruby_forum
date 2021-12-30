@@ -1,3 +1,10 @@
 <h1>Subforum Index</h1>
-<p>Display list of subforums</p>
+
+<% @subs.each do |sub| %>
+  <div>
+    <h5><%= link_to sub.name, sub_path(sub) %></h5>
+  </div>
+<% end %>
+
+<%= link_to "New Sub", new_sub_path %><br>
 

@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   root "subs#index"
 
-  get "/subs", to: "subs#index"
-
+  resources :subs do
+    resources :posts do
+      resources :comments
+    end
+  end
 end

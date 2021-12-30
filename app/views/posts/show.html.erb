@@ -1,0 +1,35 @@
+<div>
+  <h1><%= @post.title %></h1>
+  <h3><%= @post.user %></h3>
+
+  <p><%= @post.body %></p>
+
+  <ul>
+    <li><%= link_to "Edit", edit_post_path(@post) %></li>
+    <li><%= link_to "Delete", post_path(@post),
+        method: :delete,
+        data: { confirm: "Are you sure?" } %></li>
+  </ul>
+</div>
+
+<div>
+  <h2>Comments</h2>
+
+  <%= render @post.comments %>
+
+  <%= form_with(model: [@post, @post.comments.build]) do |f| %>
+    <div>
+      <p>
+        <%= form.label "Author" %><br>
+        <%= form.text_field :user %>
+      </p>
+      <p>
+        <%= f.label "New Comment" %><br>
+        <%= f.text_area :body %>
+      </p>
+    </div>
+    <p>
+      <%= f.submit "Submit" %>
+    </p>
+  <% end %>
+</div>

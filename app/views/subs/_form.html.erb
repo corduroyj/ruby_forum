@@ -1,0 +1,20 @@
+<%= form_with(model: sub, local: true) do |form| %>
+  <% if sub.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(sub.errors.count, "error") %> prohibited this sub from being saved:</h4>
+
+      <ul>
+        <% sub.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <%= form.submit "Save Sub" %>
+<% end %>
