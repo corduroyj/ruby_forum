@@ -1,7 +1,5 @@
 class PostsController < ApplicationController
   
-  # @sub = Sub.find(params[:sub_id])
-
   def index
     @posts = Post.all
   end
@@ -15,7 +13,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(title: "...", body: "...")
+    @sub = Sub.find(params[:sub_id])
+    @post = @sub.posts.new(post_params)
 
     if @post.save
       redirect_to @post
@@ -23,4 +22,11 @@ class PostsController < ApplicationController
       render :new, status: :unprocessable_entiry
     end
   end
+
+  private 
+
+  def post_params
+    params.require(:comment).permit(:name, :body)
+  end
+
 end
