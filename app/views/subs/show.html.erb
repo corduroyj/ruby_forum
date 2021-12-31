@@ -1,6 +1,8 @@
 <h1><%= @sub.name %></h1>
 
-<%= render @sub.posts %>
+<ul>
+  <%= render @sub.posts %>
+</ul>
 
 <%= link_to "New Post", new_sub_post_path(@sub, sub_id: @sub.id)%><br>
 

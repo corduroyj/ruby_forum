@@ -2,4 +2,10 @@
 
 <%= link_to "New Post", new_post_path %><br>
 
-<%= render @sub.posts %>
+<ul>
+  <% @sub.posts.each do |post| %>
+    <li>
+      <%= link_to post.title, post %>
+    </li>
+  <% end %>
+</ul>

@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    @sub = Sub.find(params[:sub_id])
     @post = Post.new
   end
 
@@ -17,16 +18,16 @@ class PostsController < ApplicationController
     @post = @sub.posts.new(post_params)
 
     if @post.save
-      redirect_to @post
+      redirect_to @sub
     else
-      render :new, status: :unprocessable_entiry
+      render :new, status: :unprocessable_entity
     end
   end
 
   private 
 
   def post_params
-    params.require(:comment).permit(:name, :body)
+    params.require(:post).permit(:title, :body)
   end
 
 end

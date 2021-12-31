@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root "subs#index"
 
   resources :subs do
-    resources :posts
+    resources :posts do
+      resources :comments
+    end
   end
 end
